@@ -25,6 +25,7 @@ jobs:
 
   deploy:
     needs: [ build ]
+    permissions: write-all
     runs-on: ubuntu-latest
 
     environment: production
