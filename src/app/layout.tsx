@@ -25,6 +25,7 @@ export default function RootLayout({
           <SigninButton />
           {children}
           <footer>
+            <p>NEXTAUTH_URL: {process.env.NEXTAUTH_URL}</p>
             <p>VERCEL_URL: {process.env.VERCEL_URL}</p>
             <p>VERCEL_ENV: {process.env.VERCEL_ENV}</p>
             <p>VERCEL_BRANCH_URL: {process.env.VERCEL_BRANCH_URL}</p>
