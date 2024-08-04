@@ -19,6 +19,7 @@ export default async function ProductsPage() {
           key={product.id}
           href={`/products/${product.id}`}
           className='w-full'
+          prefetch={false}
         >
           <Card {...product} />
         </Link>

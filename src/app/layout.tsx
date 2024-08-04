@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { VercelToolbar } from '@vercel/toolbar/next';
+import SigninButton from '@/components/SigninButton';
+import { SessionProvider } from 'next-auth/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,8 +21,25 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        {children}
-        {shouldInjectToolbar && <VercelToolbar />}
+        <SessionProvider>
+          <SigninButton />
+          {children}
+          <footer>
+            <p>VERCEL_URL: {process.env.VERCEL_URL}</p>
+            <p>VERCEL_ENV: {process.env.VERCEL_ENV}</p>
+            <p>VERCEL_BRANCH_URL: {process.env.VERCEL_BRANCH_URL}</p>
+            <p>
+              VERCEL_PROJECT_PRODUCTION_URL:{' '}
+              {process.env.VERCEL_PROJECT_PRODUCTION_URL}
+            </p>
+            <p>VERCEL_DEPLOYMENT_ID: {process.env.VERCEL_DEPLOYMENT_ID}</p>
+            <p>VERCEL_GIT_COMMIT_SHA: {process.env.VERCEL_GIT_COMMIT_SHA}</p>
+            <p>
+              VERCEL_GIT_COMMIT_MESSAGE: {process.env.VERCEL_GIT_COMMIT_MESSAGE}
+            </p>
+          </footer>
+        </SessionProvider>
+        {/*{shouldInjectToolbar && <VercelToolbar />}*/}
       </body>
     </html>
   );

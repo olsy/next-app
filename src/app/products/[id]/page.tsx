@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Product } from '../types';
 import Card from '@/components/Card';
 import { revalidatePath } from 'next/cache';
+import { auth } from '@/auth';
 
 export const revalidate = 60; // in seconds
 
@@ -18,6 +19,10 @@ const fetchProduct = async (id: string): Promise<Product | null> => {
 
 export default async function ProductPage({ params }: any) {
   const product = await fetchProduct(params.id);
+
+  const session = await auth();
+
+  console.log(session);
 
   if (!product) {
     return (
