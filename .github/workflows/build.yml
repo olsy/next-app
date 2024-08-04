@@ -62,4 +62,5 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: |
           url="$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN_ID }})"
-          vercel alias --token=${{ secrets.VERCEL_TOKEN_ID }} set "$url" your-alias.app
+          echo $url
+          vercel alias --token=${{ secrets.VERCEL_TOKEN_ID }} set "$url" next-app-1-development.vercel.app
