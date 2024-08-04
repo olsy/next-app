@@ -26,3 +26,8 @@ jobs:
   deploy:
     needs: build
     uses: ./deploy.yml
+    width:
+      version: latest
+      destination: production
+      branch: ${{ github.ref }}
+    secrets: inherit
