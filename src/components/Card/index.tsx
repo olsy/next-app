@@ -5,6 +5,9 @@ import { showPrice } from '@/flags';
 
 const Card = async (product: Product) => {
   const showPriceFF = await showPrice();
+
+  console.log({ showPriceFF });
+
   return (
     <div className='flex w-full border rounded p-4 border-black gap-4 bg-cyan-700'>
       <Image
