@@ -10,7 +10,7 @@ export const revalidate = 60; // in seconds
 // };
 
 export default async function ProductsPage() {
-  const products = [];
+  const products: Product[] = [];
 
   return (
     <main className='flex min-h-screen flex-col items-center p-24 gap-4'>
