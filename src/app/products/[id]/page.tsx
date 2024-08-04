@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import {Product} from '../types'
 import Card from "@/components/Card";
-import { redirect } from 'next/navigation'
 import {revalidatePath} from "next/cache";
 
 // export const revalidate = 60; // in milliseconds
 
-export const fetchProduct = async (id:string): Promise<Product | null> => {
+const fetchProduct = async (id:string): Promise<Product | null> => {
     const res = await fetch(`${process.env.API_URL}/${id}`);
 
     if(!res.ok){
@@ -17,7 +16,7 @@ export const fetchProduct = async (id:string): Promise<Product | null> => {
     return await res.json()
 }
 
-export default async function Product({params}) {
+export default async function ProductPage({params}:any) {
     const product = await fetchProduct(params.id)
 
     if(!product){

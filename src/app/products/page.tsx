@@ -34,8 +34,8 @@ import Card from "@/components/Card";
 //     }
 // }
 
-export const fetchProducts = async (): Promise<Product[]> => {
-    const res = await fetch(process.env.API_URL);
+const fetchProducts = async (): Promise<Product[]> => {
+    const res = await fetch(process.env.API_URL as string);
     return await res.json()
 }
 
