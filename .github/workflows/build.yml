@@ -48,6 +48,8 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     environment: production
+    env:
+      DEPLOY_URL: next-app-1-development.vercel.app
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
@@ -63,4 +65,4 @@ jobs:
         run: |
           url="$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN_ID }})"
           echo $url
-          vercel alias --token=${{ secrets.VERCEL_TOKEN_ID }} set "$url" next-app-1-development.vercel.app
+          vercel alias --token=${{ secrets.VERCEL_TOKEN_ID }} set "$url" ${{ env.DEPLOY_URL }}
